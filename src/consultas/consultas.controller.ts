@@ -31,5 +31,11 @@ export class ConsultasController {
   remove(@Param('id') id: string) {
     return this.consultasService.remove(id);
   }
+  @Post('calculo-promedio-costo')
+  calculoPromedioCosto(
+    @Body('costos') costos: number[],
+    @Body('limite') limite: number,
+   ) { return this.consultasService.calculoPromedioCosto(costos, limite);
+    }
 }
 

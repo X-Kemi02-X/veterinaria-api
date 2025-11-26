@@ -37,4 +37,15 @@ export class ConsultasService {
     if (!consulta) return null;
     return this.consultaRepository.remove(consulta);
   }
+  
+  calculoPromedioCosto(costos: number[], limite: number) {
+    const filtrados = costos.filter(costo => costo <= limite);
+    const suma = filtrados.reduce((acc, curr) => acc + curr, 0);
+    const promedio = filtrados.length > 0 ? suma / filtrados.length : 0;
+    return {
+      costosConsiderados: filtrados,
+      sumaTotal: suma,
+      promedio: promedio,
+    }
+  }
 }
