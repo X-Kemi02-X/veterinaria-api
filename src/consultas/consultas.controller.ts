@@ -36,6 +36,14 @@ export class ConsultasController {
     @Body('costos') costos: number[],
     @Body('limite') limite: number,
    ) { return this.consultasService.calculoPromedioCosto(costos, limite);
-    }
+  }
+  @Post('contar-por-especie')
+  contarPorEspecie(
+    @Body('consultas') consultas: { nombreMascota: string; especie: string}[],
+    @Body('especieFiltro') especieFiltro: string,
+  ) {
+    return this.consultasService.contarPorEspecie(consultas, especieFiltro);
+  }
+
 }
 

@@ -48,4 +48,14 @@ export class ConsultasService {
       promedio: promedio,
     }
   }
+  contarPorEspecie(
+    consultas: { nombreMascota: string; especie: string }[],
+    especieFiltro: string,
+  ) {
+    const total = consultas.filter(c => c.especie === especieFiltro).length;
+    return {
+      especie: especieFiltro,
+      total: total,
+    };
+  }
 }
